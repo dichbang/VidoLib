@@ -1,0 +1,14 @@
+{
+  "name": "@media-runtime/codecs",
+  "version": "1.0.0",
+  "description": "Capability negotiation decoder chain (WebCodecs -> native -> WASM royalty-free -> FFmpeg opt-in)",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}

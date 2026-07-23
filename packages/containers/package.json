@@ -1,0 +1,14 @@
+{
+  "name": "@media-runtime/containers",
+  "version": "1.0.0",
+  "description": "Isolated demuxers for MP4, MKV, WebM, AVI, MOV, FLV, TS, PS, OGG, and ASF containers",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}
