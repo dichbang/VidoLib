@@ -1,0 +1,14 @@
+{
+  "name": "@vidolib/filters",
+  "version": "1.0.0",
+  "description": "WebGL/WebGPU video processing filters (Chroma Key, Brightness, Contrast, Blur, Watermark) and WebAudio filters for VidoLib",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}

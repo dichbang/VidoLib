@@ -26,7 +26,10 @@ const BUDGETS = [
   { package: 'security', maxSizeKb: 20 },
   { package: 'plugins', maxSizeKb: 15 },
   { package: 'ui', maxSizeKb: 45 },
-  { package: 'utils', maxSizeKb: 25 }
+  { package: 'utils', maxSizeKb: 25 },
+  { package: 'transcoder', maxSizeKb: 25 },
+  { package: 'filters', maxSizeKb: 30 },
+  { package: 'recorder', maxSizeKb: 20 }
 ];
 
 console.log('Running VidoLib Bundle Size Budget Audit...\n');

@@ -9,7 +9,8 @@ const rootDir = path.resolve(__dirname, '..');
 const packages = [
   'utils', 'plugins', 'core', 'stream', 'buffer', 'containers', 'manifest',
   'abr', 'codecs', 'drm', 'renderer', 'audio', 'subtitle', 'worker',
-  'scheduler', 'os-integration', 'telemetry', 'security', 'ui'
+  'scheduler', 'os-integration', 'telemetry', 'security', 'ui',
+  'transcoder', 'filters', 'recorder'
 ];
 
 console.log('Building UMD/IIFE CDN bundles for VidoLib packages...');

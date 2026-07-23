@@ -24,7 +24,10 @@
       "@vidolib/os-integration": ["packages/os-integration/src/index.ts"],
       "@vidolib/telemetry": ["packages/telemetry/src/index.ts"],
       "@vidolib/security": ["packages/security/src/index.ts"],
-      "@vidolib/ui": ["packages/ui/src/index.ts"]
+      "@vidolib/ui": ["packages/ui/src/index.ts"],
+      "@vidolib/transcoder": ["packages/transcoder/src/index.ts"],
+      "@vidolib/filters": ["packages/filters/src/index.ts"],
+      "@vidolib/recorder": ["packages/recorder/src/index.ts"]
     },
     "declaration": true,
     "declarationMap": true,

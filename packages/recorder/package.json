@@ -1,0 +1,14 @@
+{
+  "name": "@vidolib/recorder",
+  "version": "1.0.0",
+  "description": "Zero-latency canvas and stream recorder producing downloadable WebM/MP4 media files for VidoLib",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}

@@ -22,7 +22,10 @@ export default defineConfig({
       '@vidolib/os-integration': path.resolve(__dirname, 'packages/os-integration/src/index.ts'),
       '@vidolib/telemetry': path.resolve(__dirname, 'packages/telemetry/src/index.ts'),
       '@vidolib/security': path.resolve(__dirname, 'packages/security/src/index.ts'),
-      '@vidolib/ui': path.resolve(__dirname, 'packages/ui/src/index.ts')
+      '@vidolib/ui': path.resolve(__dirname, 'packages/ui/src/index.ts'),
+      '@vidolib/transcoder': path.resolve(__dirname, 'packages/transcoder/src/index.ts'),
+      '@vidolib/filters': path.resolve(__dirname, 'packages/filters/src/index.ts'),
+      '@vidolib/recorder': path.resolve(__dirname, 'packages/recorder/src/index.ts')
     }
   },
   test: {
