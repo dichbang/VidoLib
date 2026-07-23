@@ -1,0 +1,14 @@
+{
+  "name": "@media-runtime/os-integration",
+  "version": "1.0.0",
+  "description": "Media Session API, Picture-in-Picture, Fullscreen, and Cast/AirPlay OS plugins",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}
