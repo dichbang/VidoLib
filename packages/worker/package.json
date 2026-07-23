@@ -1,0 +1,14 @@
+{
+  "name": "@media-runtime/worker",
+  "version": "1.0.0",
+  "description": "Worker thread orchestration and Transferable object pipeline for media-runtime",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}

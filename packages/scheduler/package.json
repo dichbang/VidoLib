@@ -1,0 +1,14 @@
+{
+  "name": "@media-runtime/scheduler",
+  "version": "1.0.0",
+  "description": "Audio/Video synchronization, frame timing, dropped frame counter, and speed controller",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}
