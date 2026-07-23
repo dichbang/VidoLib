@@ -1,0 +1,14 @@
+{
+  "name": "@media-runtime/ui",
+  "version": "1.0.0",
+  "description": "Framework-agnostic, WCAG 2.1 AA compliant UI controls for media-runtime",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}
