@@ -2,17 +2,19 @@
 
 <img src="./docs/logo.png" alt="VidoLib Logo" width="180" style="border-radius: 16px; margin-bottom: 16px;" />
 
----
+# 🎬 **VidoLib**
 
 ### **The Native, Zero-Dependency Browser Media Engine**
 *High-performance hardware-accelerated playback, transcoding, and processing for HLS, DASH, MP4, WebM, MKV, FLV, TS & Subtitles — without 30MB FFmpeg WASM bloat.*
 
+> 🚧 **Active Development Notice**: VidoLib is currently in pre-release development. Packages are being built locally and are not yet published to npm.
+
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSING.md)
-[![Bundle Size](https://img.shields.io/badge/Core_Size-3.4KB_gzipped-brightgreen.svg)](#-package-ecosystem)
+[![Status: Pre--release](https://img.shields.io/badge/Status-Pre--release-orange.svg)](#-building--local-development)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
-[Quick Start](#-quick-start) • [Why No FFmpeg?](#-why-no-ffmpeg-wasm) • [Native Capabilities](#-native-browser-ffmpeg-equivalent-capabilities) • [Architecture](#-architecture-overview) • [Package Ecosystem](#-package-ecosystem) • [Contributing](#-contributing) • [Roadmap](./docs/ROADMAP.md)
+[Quick Start](#-building--local-development) • [Why No FFmpeg?](#-why-no-ffmpeg-wasm) • [Native Capabilities](#-native-browser-ffmpeg-equivalent-capabilities) • [Architecture](#-architecture-overview) • [Package Ecosystem](#-package-ecosystem) • [Contributing](#-contributing) • [Roadmap](./docs/ROADMAP.md)
 
 </div>
 
@@ -32,35 +34,32 @@ Traditional web media players fall into two traps:
 
 ---
 
-## 🎥 Native Browser FFmpeg-Equivalent Capabilities
+## 🛠️ Building & Local Development
 
-`VidoLib` implements classic FFmpeg media operations natively inside the browser using modern web standards (`WebCodecs`, `WebGL`, `WebAudio`, `Streams`):
-
-- 🔄 **Hardware Transcoding & Re-encoding (`@vidolib/transcoder`)**: GPU-accelerated client-side video frame encoding to H.264/VP9 via `VideoEncoder`.
-- 🎨 **GPU Video & Audio Filters (`@vidolib/filters`)**: Real-time Green Screen Removal (Chroma Keying), Color Balance, Brightness, Contrast, Blur, and Watermarking.
-- 🔴 **Zero-Lag Canvas & Screen Recording (`@vidolib/recorder`)**: Capture and export canvas animations, webcams, and streams directly to downloadable MP4/WebM files.
-- 📦 **Multi-Container Demuxing (`@vidolib/containers`)**: Isolated parsers for MP4, MKV, WebM, AVI, MOV, FLV, TS, PS, OGG, and ASF formats.
-
-> *Read the full technical mapping: [FFMPEG_CAPABILITIES_ROADMAP.md](./docs/FFMPEG_CAPABILITIES_ROADMAP.md)*
-
----
-
-## 🚀 Quick Start
-
-### 1. Installation
-
-Install only the packages your application needs:
+Since VidoLib is currently in active development, clone the repository to build and test locally:
 
 ```bash
-npm install @vidolib/core @vidolib/containers @vidolib/ui
+# 1. Clone the repository
+git clone git@github.com:swadhinbiswas/VidoLib.git
+cd VidoLib
+
+# 2. Install development dependencies
+npm install
+
+# 3. Build all 22 monorepo packages (Go-powered sub-second build)
+npm run build
+
+# 4. Run tests & verification
+node scripts/test-runner.js
 ```
 
-### 2. Basic Player Setup
+### Usage in Local Projects
+
+Import packages from the compiled `dist/` directories or use local workspace linking:
 
 ```typescript
-import { Player } from '@vidolib/core';
-import { MP4Demuxer } from '@vidolib/containers';
-import { PlayerUI } from '@vidolib/ui';
+import { Player } from './packages/core/dist/index.js';
+import { PlayerUI } from './packages/ui/dist/index.js';
 
 // Initialize core VidoLib runtime
 const player = new Player();
@@ -73,6 +72,19 @@ const ui = new PlayerUI(player, container);
 await player.load('https://example.com/video.mp4');
 player.play();
 ```
+
+---
+
+## 🎥 Native Browser FFmpeg-Equivalent Capabilities
+
+`VidoLib` implements classic FFmpeg media operations natively inside the browser using modern web standards (`WebCodecs`, `WebGL`, `WebAudio`, `Streams`):
+
+- 🔄 **Hardware Transcoding & Re-encoding (`@vidolib/transcoder`)**: GPU-accelerated client-side video frame encoding to H.264/VP9 via `VideoEncoder`.
+- 🎨 **GPU Video & Audio Filters (`@vidolib/filters`)**: Real-time Green Screen Removal (Chroma Keying), Color Balance, Brightness, Contrast, Blur, and Watermarking.
+- 🔴 **Zero-Lag Canvas & Screen Recording (`@vidolib/recorder`)**: Capture and export canvas animations, webcams, and streams directly to downloadable MP4/WebM files.
+- 📦 **Multi-Container Demuxing (`@vidolib/containers`)**: Isolated parsers for MP4, MKV, WebM, AVI, MOV, FLV, TS, PS, OGG, and ASF formats.
+
+> *Read the full technical mapping: [FFMPEG_CAPABILITIES_ROADMAP.md](./docs/FFMPEG_CAPABILITIES_ROADMAP.md)*
 
 ---
 
@@ -90,11 +102,11 @@ player.play();
 
 ---
 
-## 📦 Package Ecosystem
+## 📦 Package Ecosystem (Under Construction)
 
-Every package is independently versioned, typed, and available via npm or CDN `<script>` tags:
+All packages are compiled in the monorepo under `packages/<name>/dist/`:
 
-| Package | Purpose | Size (gzipped) | CDN Bundle |
+| Package | Purpose | Size (gzipped) | Target Global |
 |---|---|---|---|
 | [`@vidolib/core`](./packages/core) | Player, Clock, Pipeline, EventBus | **3.44 KB** | `VidoLibCore` |
 | [`@vidolib/stream`](./packages/stream) | Range HTTP, Blob, File, WS, WebRTC, S3, IPFS | **2.86 KB** | `VidoLibStream` |
@@ -110,23 +122,6 @@ Every package is independently versioned, typed, and available via npm or CDN `<
 | [`@vidolib/ui`](./packages/ui) | WCAG 2.1 AA accessible glassmorphic UI controls | **3.53 KB** | `VidoLibUi` |
 | [`@vidolib/telemetry`](./packages/telemetry) | Zero-tracking QoE metrics event surface | **1.76 KB** | `VidoLibTelemetry` |
 | [`@vidolib/os-integration`](./packages/os-integration) | Media Session API, PiP, Fullscreen, Cast | **1.88 KB** | `VidoLibOsIntegration` |
-
----
-
-## 🌐 CDN Usage (No Build Step Required)
-
-Use `@vidolib` directly in plain HTML:
-
-```html
-<div id="player-container" style="width: 800px; height: 450px;"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/@vidolib/core/dist/index.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@vidolib/ui/dist/index.umd.js"></script>
-<script>
-  const player = new VidoLibCore.Player();
-  const ui = new VidoLibUi.PlayerUI(player, document.getElementById('player-container'));
-</script>
-```
 
 ---
 
