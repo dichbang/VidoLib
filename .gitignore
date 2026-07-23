@@ -5,11 +5,8 @@ node_modules/
 # Build artifacts
 dist/
 *.tsbuildinfo
+*.d.ts
 *.d.ts.map
-examples/*.d.ts
-benchmarks/*.d.ts
-tests/*.d.ts
-packages/**/src/*.d.ts
 
 # Coverage & Logs
 coverage/
