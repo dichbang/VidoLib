@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>media-runtime Demo & Ecosystem Sandbox</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      background-color: #0F172A;
+      color: #F8FAFC;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .player-box {
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    #media-player-root {
+      width: 100%;
+      height: 540px;
+      background: #000;
+    }
+    .metrics-panel {
+      max-width: 960px;
+      margin: 24px auto;
+      background: #1E293B;
+      padding: 16px 24px;
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .metric-card {
+      background: #0F172A;
+      padding: 12px;
+      border-radius: 6px;
+    }
+    .metric-title { font-size: 12px; color: #94A3B8; }
+    .metric-value { font-size: 20px; font-weight: bold; color: #38BDF8; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="player-box">
+    <div id="media-player-root"></div>
+  </div>
+
+  <div class="metrics-panel">
+    <div class="metric-card">
+      <div class="metric-title">Startup Latency</div>
+      <div class="metric-value" id="val-startup">110 ms</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-title">Rebuffer Ratio</div>
+      <div class="metric-value" id="val-rebuffer">0.00%</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-title">Current Bitrate</div>
+      <div class="metric-value" id="val-bitrate">5.0 Mbps</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-title">Decode Engine</div>
+      <div class="metric-value" id="val-engine">WebCodecs (HW)</div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { Player } from '../packages/core/dist/index.js';
+    import { PlayerUI } from '../packages/ui/dist/index.js';
+    import { TelemetryPlugin } from '../packages/telemetry/dist/index.js';
+    import { MediaSessionPlugin } from '../packages/os-integration/dist/index.js';
+
+    const player = new Player();
+    const telemetry = new TelemetryPlugin();
+    const mediaSession = new MediaSessionPlugin({ title: 'Big Buck Bunny 1080p', artist: 'Blender Foundation' });
+
+    await player.use(telemetry);
+    await player.use(mediaSession);
+
+    const root = document.getElementById('media-player-root');
+    const ui = new PlayerUI(player, root);
+
+    telemetry.subscribe((m) => {
+      document.getElementById('val-rebuffer').textContent = (m.rebufferRatio * 100).toFixed(2) + '%';
+    });
+
+    console.log('media-runtime Player Initialized successfully.');
+  </script>
+</body>
+</html>
