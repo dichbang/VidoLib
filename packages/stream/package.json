@@ -1,0 +1,14 @@
+{
+  "name": "@media-runtime/stream",
+  "version": "1.0.0",
+  "description": "Source adapters normalizing HTTP, Blob, File, WebSocket, WebRTC, S3, and IPFS to ReadableStream<Uint8Array>",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}
