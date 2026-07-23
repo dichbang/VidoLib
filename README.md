@@ -2,7 +2,7 @@
 
 <img src="./docs/logo.png" alt="VidoLib Logo" width="180" style="border-radius: 16px; margin-bottom: 16px;" />
 
-# 🎬 **VidoLib**
+---
 
 ### **The Native, Zero-Dependency Browser Media Engine**
 *High-performance hardware-accelerated playback, transcoding, and processing for HLS, DASH, MP4, WebM, MKV, FLV, TS & Subtitles — without 30MB FFmpeg WASM bloat.*
