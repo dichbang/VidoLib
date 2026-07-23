@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build artifacts
+dist/
+*.tsbuildinfo
+
+# Coverage & Logs
+coverage/
+*.log
+npm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
