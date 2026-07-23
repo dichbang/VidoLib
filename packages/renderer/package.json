@@ -1,0 +1,14 @@
+{
+  "name": "@media-runtime/renderer",
+  "version": "1.0.0",
+  "description": "Canvas2D, WebGL, and WebGPU high-performance video frame renderers",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-all.js"
+  }
+}
