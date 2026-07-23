@@ -189,7 +189,6 @@ Deep dive: [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) · Plugin authoring:
 <details>
 <summary>Repository layout</summary>
 
-```
 VidoLib/
 ├── packages/
 │   ├── core/
