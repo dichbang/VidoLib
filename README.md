@@ -66,7 +66,7 @@ VidoLib is currently source-only. Clone and build locally to try it:
 
 ```bash
 # 1. Clone the repository
-git clone git@github.com:swadhinbiswas/VidoLib.git
+git clone https://github.com/swadhinbiswas/VidoLib.git
 cd VidoLib
 
 # 2. Install workspace dependencies
