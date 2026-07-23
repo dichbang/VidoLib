@@ -80,7 +80,7 @@ node scripts/test-runner.js
 ```
 
 > [!NOTE]
-> The build step compiles the monorepo through a native Go binary for a sub-second build. Make sure `go` is available on your `PATH` before running `npm run build`.
+> The build step compiles each package with esbuild and generates TypeScript declarations. Make sure Node.js and npm are available before running `npm run build`.
 
 ### Usage in local projects
 
