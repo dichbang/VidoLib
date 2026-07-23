@@ -1,10 +1,10 @@
-import { MediaPlugin, PluginContext } from '@media-runtime/plugins';
+import { MediaPlugin, PluginContext } from '@vidolib/plugins';
 
 export interface QoEMetrics {
   startupTimeMs: number;
   totalPlayTimeSeconds: number;
   totalRebufferTimeSeconds: number;
-  rebufferRatio: number; // rebufferTime / totalPlayTime
+  rebufferRatio: number;
   bitrateSwitchCount: number;
   droppedFramesCount: number;
   currentBitrate: number;

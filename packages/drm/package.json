@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/drm",
+  "name": "@vidolib/drm",
   "version": "1.0.0",
-  "description": "Encrypted Media Extensions (EME) plugin interface for Widevine, PlayReady, and FairPlay",
+  "description": "Encrypted Media Extensions (EME) plugin interface for Widevine, PlayReady, and FairPlay in VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

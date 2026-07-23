@@ -1,4 +1,4 @@
-import { MediaPlugin, PluginContext } from '@media-runtime/plugins';
+import { MediaPlugin, PluginContext } from '@vidolib/plugins';
 
 export type KeySystem =
   | 'com.widevine.alpha'

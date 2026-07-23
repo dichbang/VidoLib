@@ -1,5 +1,5 @@
 {
-  "name": "@media-runtime/stream",
+  "name": "@vidolib/stream",
   "version": "1.0.0",
   "description": "Source adapters normalizing HTTP, Blob, File, WebSocket, WebRTC, S3, and IPFS to ReadableStream<Uint8Array>",
   "main": "dist/index.cjs",

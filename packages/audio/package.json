@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/audio",
+  "name": "@vidolib/audio",
   "version": "1.0.0",
-  "description": "AudioWorklet and WebAudio pipeline for media-runtime",
+  "description": "AudioWorklet and WebAudio pipeline for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

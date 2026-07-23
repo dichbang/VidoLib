@@ -12,7 +12,7 @@ const packages = fs.readdirSync(path.join(rootDir, 'packages'), { withFileTypes:
   .filter(d => d.isDirectory())
   .map(d => d.name);
 
-console.log(`⚡ Building ${packages.length} packages using Go-powered esbuild...\n`);
+console.log(`⚡ Building ${packages.length} packages in VidoLib monorepo using Go-powered esbuild...\n`);
 const startTotal = performance.now();
 
 for (const pkg of packages) {
@@ -26,7 +26,7 @@ for (const pkg of packages) {
     fs.mkdirSync(distDir, { recursive: true });
   }
 
-  const globalName = `MediaRuntime${pkg.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('')}`;
+  const globalName = `VidoLib${pkg.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('')}`;
 
   // 1. Build ESM (.js)
   esbuild.buildSync({
@@ -61,7 +61,7 @@ for (const pkg of packages) {
     sourcemap: true
   });
 
-  console.log(`⚡ [esbuild] @media-runtime/${pkg.padEnd(16)} -> ESM, CJS & UMD (Global: window.${globalName})`);
+  console.log(`⚡ [esbuild] @vidolib/${pkg.padEnd(16)} -> ESM, CJS & UMD (Global: window.${globalName})`);
 }
 
 // 4. Generate TypeScript Type Declarations (.d.ts) via tsc --emitDeclarationOnly
@@ -70,7 +70,6 @@ try {
   execSync('npx tsc --emitDeclarationOnly', { cwd: rootDir, stdio: 'inherit' });
   console.log('✅ Type Declarations (.d.ts) generated successfully.');
 } catch {
-  // Copy src/index.ts fallback typings if any warning
   for (const pkg of packages) {
     const srcIndex = path.join(rootDir, 'packages', pkg, 'src', 'index.ts');
     const distDts = path.join(rootDir, 'packages', pkg, 'dist', 'index.d.ts');

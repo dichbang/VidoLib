@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/manifest",
+  "name": "@vidolib/manifest",
   "version": "1.0.0",
-  "description": "HLS (.m3u8) and DASH (.mpd) manifest parsing with common variant and rendition model",
+  "description": "HLS (.m3u8) and DASH (.mpd) manifest parsing with common variant and rendition model for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

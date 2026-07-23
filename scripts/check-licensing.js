@@ -26,7 +26,6 @@ function scanDirectory(dirPath) {
     } else if (entry.isFile()) {
       const lowerName = entry.name.toLowerCase();
 
-      // Check WASM files
       if (lowerName.endsWith('.wasm')) {
         let isAllowed = false;
         for (const allowed of ROYALTY_FREE_ALLOWLIST) {
@@ -40,7 +39,6 @@ function scanDirectory(dirPath) {
         }
       }
 
-      // Check JS/TS files in packages/codecs/software for prohibited patent pool software implementations
       if ((lowerName.endsWith('.ts') || lowerName.endsWith('.js')) && fullPath.includes('packages/codecs/src/software')) {
         const content = fs.readFileSync(fullPath, 'utf8').toLowerCase();
         for (const prohibited of PROHIBITED_WASM_CODECS) {
@@ -56,7 +54,7 @@ function scanDirectory(dirPath) {
 }
 
 const packagesDir = path.join(rootDir, 'packages');
-console.log('Running media-runtime Codec Licensing Audit...');
+console.log('Running VidoLib Codec Licensing Audit...');
 const errors = scanDirectory(packagesDir);
 
 if (errors.length > 0) {

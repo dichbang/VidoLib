@@ -1,4 +1,4 @@
-import { ContainerDemuxer } from '@media-runtime/containers';
+import { ContainerDemuxer } from '@vidolib/containers';
 
 export interface FuzzResult {
   iterations: number;
@@ -47,7 +47,7 @@ export class FuzzTarget {
           msg.includes('End of Stream') ||
           msg.includes('out of bounds')
         ) {
-          // Expected input validation catch
+          // Expected catch
         } else {
           crashes++;
           errors.push({ iteration: i, message: msg });
@@ -60,7 +60,7 @@ export class FuzzTarget {
 }
 
 export const CSP_RECOMMENDED_DIRECTIVES = `
-# media-runtime Recommended Content Security Policy (CSP)
+# VidoLib Recommended Content Security Policy (CSP)
 default-src 'self';
 script-src 'self' 'wasm-unsafe-eval' blob:;
 worker-src 'self' blob:;

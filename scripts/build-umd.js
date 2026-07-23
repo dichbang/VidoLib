@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { execSync } from 'node:child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +12,7 @@ const packages = [
   'scheduler', 'os-integration', 'telemetry', 'security', 'ui'
 ];
 
-console.log('Building UMD/IIFE CDN bundles for all packages...');
+console.log('Building UMD/IIFE CDN bundles for VidoLib packages...');
 
 for (const pkg of packages) {
   const pkgDir = path.join(rootDir, 'packages', pkg);
@@ -25,9 +24,8 @@ for (const pkg of packages) {
   const indexJs = path.join(distDir, 'index.js');
   if (fs.existsSync(indexJs)) {
     const code = fs.readFileSync(indexJs, 'utf8');
-    const globalName = `MediaRuntime${pkg.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('')}`;
+    const globalName = `VidoLib${pkg.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join('')}`;
     
-    // Generate UMD wrapper
     const umdContent = `(function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['exports'], factory);
@@ -44,7 +42,7 @@ for (const pkg of packages) {
 
     fs.writeFileSync(path.join(distDir, 'index.umd.js'), umdContent, 'utf8');
     fs.writeFileSync(path.join(distDir, 'index.umd.js.map'), `{"version":3,"sources":["index.js"],"names":[],"mappings":""}`, 'utf8');
-    console.log(`  Created UMD bundle: @media-runtime/${pkg} -> dist/index.umd.js (Global: window.${globalName})`);
+    console.log(`  Created UMD bundle: @vidolib/${pkg} -> dist/index.umd.js (Global: window.${globalName})`);
   }
 }
 

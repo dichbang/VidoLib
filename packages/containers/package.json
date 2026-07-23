@@ -1,5 +1,5 @@
 {
-  "name": "@media-runtime/containers",
+  "name": "@vidolib/containers",
   "version": "1.0.0",
   "description": "Isolated demuxers for MP4, MKV, WebM, AVI, MOV, FLV, TS, PS, OGG, and ASF containers",
   "main": "dist/index.cjs",

@@ -16,8 +16,8 @@ import { AVSynchronizer } from '../packages/scheduler/src/index.js';
 import { TelemetryPlugin } from '../packages/telemetry/src/index.js';
 import { FuzzTarget } from '../packages/security/src/index.js';
 
-describe('media-runtime Comprehensive Monorepo Unit Test Suite', () => {
-  it('@media-runtime/utils: BitStreamReader & RingBuffer', () => {
+describe('VidoLib Comprehensive Monorepo Unit Test Suite', () => {
+  it('@vidolib/utils: BitStreamReader & RingBuffer', () => {
     const data = new Uint8Array([0x12, 0x34, 0x56, 0x78]);
     const reader = new BitStreamReader(data);
     expect(reader.readUint16BE()).toBe(0x1234);
@@ -30,7 +30,7 @@ describe('media-runtime Comprehensive Monorepo Unit Test Suite', () => {
     expect(Array.from(out)).toEqual([1, 2, 3, 4]);
   });
 
-  it('@media-runtime/core: Player state lifecycle and clock', () => {
+  it('@vidolib/core: Player state lifecycle and clock', () => {
     const player = new Player();
     expect(player.getState()).toBe('idle');
     player.play();
@@ -41,7 +41,7 @@ describe('media-runtime Comprehensive Monorepo Unit Test Suite', () => {
     expect(player.getCurrentTime()).toBe(15.5);
   });
 
-  it('@media-runtime/plugins: Plugin registration and event dispatching', async () => {
+  it('@vidolib/plugins: Plugin registration and event dispatching', async () => {
     const registry = new PluginRegistry();
     let eventReceived = false;
     await registry.register({
@@ -58,9 +58,9 @@ describe('media-runtime Comprehensive Monorepo Unit Test Suite', () => {
     expect(eventReceived).toBe(true);
   });
 
-  it('@media-runtime/containers: Demuxer probing & demuxing', () => {
+  it('@vidolib/containers: Demuxer probing & demuxing', () => {
     const registry = new ContainerRegistry();
-    const mp4Data = new Uint8Array([0x00, 0x00, 0x00, 0x14, 0x66, 0x74, 0x79, 0x70]); // ftyp
+    const mp4Data = new Uint8Array([0x00, 0x00, 0x00, 0x14, 0x66, 0x74, 0x79, 0x70]);
     const res = registry.autoDemux(mp4Data);
     expect(res.tracks.length).toBeGreaterThan(0);
 
@@ -68,7 +68,7 @@ describe('media-runtime Comprehensive Monorepo Unit Test Suite', () => {
     expect(flv.probe(new Uint8Array([0x46, 0x4C, 0x56]))).toBe(true);
   });
 
-  it('@media-runtime/manifest: HLS & DASH parsing', () => {
+  it('@vidolib/manifest: HLS & DASH parsing', () => {
     const hls = `#EXTM3U
 #EXT-X-STREAM-INF:BANDWIDTH=2000000,RESOLUTION=1280x720,CODECS="avc1.4d401f"
 http://example.com/stream.m3u8`;
@@ -77,12 +77,12 @@ http://example.com/stream.m3u8`;
     expect(playlist.renditions[0].bandwidth).toBe(2000000);
   });
 
-  it('@media-runtime/codecs: Codec capability negotiation', async () => {
+  it('@vidolib/codecs: Codec capability negotiation', async () => {
     const cap = await CodecNegotiator.negotiateVideo('avc1.4d401f');
     expect(cap.supported).toBe(true);
   });
 
-  it('@media-runtime/subtitle: SRT and ASS subtitle parsers', () => {
+  it('@vidolib/subtitle: SRT and ASS subtitle parsers', () => {
     const srt = `1
 00:00:01,000 --> 00:00:04,000
 Hello World`;
@@ -92,7 +92,7 @@ Hello World`;
     expect(packets[0].startTime).toBe(1);
   });
 
-  it('@media-runtime/security: Container parser fuzz target', () => {
+  it('@vidolib/security: Container parser fuzz target', () => {
     const demuxer = new MP4Demuxer();
     const sample = new Uint8Array([0x00, 0x00, 0x00, 0x14, 0x66, 0x74, 0x79, 0x70]);
     const res = FuzzTarget.run(demuxer, sample, 20);

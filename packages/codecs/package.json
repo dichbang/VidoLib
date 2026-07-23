@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/codecs",
+  "name": "@vidolib/codecs",
   "version": "1.0.0",
-  "description": "Capability negotiation decoder chain (WebCodecs -> native -> WASM royalty-free -> FFmpeg opt-in)",
+  "description": "Capability negotiation decoder chain (WebCodecs -> native -> WASM royalty-free -> FFmpeg opt-in) for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

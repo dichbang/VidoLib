@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/core",
+  "name": "@vidolib/core",
   "version": "1.0.0",
-  "description": "Core player, master clock, pipeline, scheduler, and packet contracts for media-runtime",
+  "description": "Core player, master clock, pipeline, scheduler, and packet contracts for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

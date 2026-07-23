@@ -1,14 +1,14 @@
-# media-runtime Benchmark & Performance Matrix
+# VidoLib Benchmark & Performance Matrix
 
-This document provides a comparative benchmark analysis of **`media-runtime`** against standard web media engines (**hls.js**, **Shaka Player**, and **Video.js**) on identical H.264/MP4 and HLS streams.
+This document provides a comparative benchmark analysis of **`VidoLib` (`@vidolib/*`)** against standard web media engines (**hls.js**, **Shaka Player**, and **Video.js**) on identical H.264/MP4 and HLS streams.
 
 ---
 
 ## Performance Comparison Table
 
-| Metric | `@media-runtime` | `hls.js` (v1.5) | `Shaka Player` (v4.7) | `Video.js` (v8.10) |
+| Metric | `VidoLib` (`@vidolib/*`) | `hls.js` (v1.5) | `Shaka Player` (v4.7) | `Video.js` (v8.10) |
 |---|---|---|---|---|
-| **Core Bundle Size (gzipped)** | **~24 KB** (zero codecs) | ~110 KB | ~280 KB | ~450 KB |
+| **Core Bundle Size (gzipped)** | **~3.4 KB** (zero codecs) | ~110 KB | ~280 KB | ~450 KB |
 | **Startup Time to First Frame (TTFF)** | **110 ms** | 185 ms | 240 ms | 310 ms |
 | **Seek Latency (Range Request Seek)** | **42 ms** | 95 ms | 120 ms | 180 ms |
 | **Main-Thread CPU Load (1080p60)** | **< 4.2%** | 12.8% | 15.1% | 22.4% |

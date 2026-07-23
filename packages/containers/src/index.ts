@@ -1,5 +1,5 @@
-import { BitStreamReader } from '@media-runtime/utils';
-import { VideoPacket, AudioPacket, SubtitlePacket, Track } from '@media-runtime/core';
+import { BitStreamReader } from '@vidolib/utils';
+import { VideoPacket, AudioPacket, SubtitlePacket, Track } from '@vidolib/core';
 
 export interface DemuxResult {
   tracks: Track[];
@@ -14,7 +14,6 @@ export interface ContainerDemuxer {
   demux(data: Uint8Array): DemuxResult;
 }
 
-// 1. MP4 Demuxer (ISO-BMFF)
 export class MP4Demuxer implements ContainerDemuxer {
   public readonly formatName: string = 'mp4';
 
@@ -42,13 +41,11 @@ export class MP4Demuxer implements ContainerDemuxer {
       if (boxSize < 8 && boxSize !== 0) break;
       const payloadSize = boxSize === 0 ? reader.byteLength - reader.position : boxSize - 8;
       
-      // Security check against unbounded memory allocations
       if (payloadSize > 50 * 1024 * 1024) {
         throw new Error(`[Security] MP4 Box size ${payloadSize} exceeds maximum safety limit (50MB)`);
       }
 
       if (reader.position + payloadSize > reader.byteLength) {
-        // Truncated box payload - stop demuxing safely
         break;
       }
 
@@ -78,7 +75,6 @@ export class MP4Demuxer implements ContainerDemuxer {
   }
 }
 
-// 2. MOV Demuxer
 export class MOVDemuxer extends MP4Demuxer {
   override readonly formatName: string = 'mov';
   override probe(data: Uint8Array): boolean {
@@ -90,7 +86,6 @@ export class MOVDemuxer extends MP4Demuxer {
   }
 }
 
-// 3. MKV & 4. WebM Demuxer
 export class MKVDemuxer implements ContainerDemuxer {
   public readonly formatName: string = 'mkv';
 
@@ -119,7 +114,6 @@ export class WebMDemuxer extends MKVDemuxer {
   override readonly formatName: string = 'webm';
 }
 
-// 5. FLV Demuxer
 export class FLVDemuxer implements ContainerDemuxer {
   public readonly formatName: string = 'flv';
 
@@ -162,7 +156,6 @@ export class FLVDemuxer implements ContainerDemuxer {
   }
 }
 
-// 6. TS Demuxer
 export class TSDemuxer implements ContainerDemuxer {
   public readonly formatName: string = 'ts';
 
@@ -197,7 +190,6 @@ export class TSDemuxer implements ContainerDemuxer {
   }
 }
 
-// 7. PS Demuxer
 export class PSDemuxer implements ContainerDemuxer {
   public readonly formatName: string = 'ps';
 
@@ -215,7 +207,6 @@ export class PSDemuxer implements ContainerDemuxer {
   }
 }
 
-// 8. AVI Demuxer
 export class AVIDemuxer implements ContainerDemuxer {
   public readonly formatName: string = 'avi';
 
@@ -238,7 +229,6 @@ export class AVIDemuxer implements ContainerDemuxer {
   }
 }
 
-// 9. OGG Demuxer
 export class OGGDemuxer implements ContainerDemuxer {
   public readonly formatName: string = 'ogg';
 
@@ -256,7 +246,6 @@ export class OGGDemuxer implements ContainerDemuxer {
   }
 }
 
-// 10. ASF Demuxer
 export class ASFDemuxer implements ContainerDemuxer {
   public readonly formatName: string = 'asf';
 

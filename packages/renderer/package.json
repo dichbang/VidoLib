@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/renderer",
+  "name": "@vidolib/renderer",
   "version": "1.0.0",
-  "description": "Canvas2D, WebGL, and WebGPU high-performance video frame renderers",
+  "description": "Canvas2D, WebGL, and WebGPU high-performance video frame renderers for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

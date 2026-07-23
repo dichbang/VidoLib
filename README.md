@@ -1,4 +1,4 @@
-# 🎬 `@media-runtime`
+# 🎬 VidoLib (`@vidolib`)
 
 <div align="center">
 
@@ -16,15 +16,15 @@
 
 ---
 
-## ✨ Why `media-runtime`?
+## ✨ Why VidoLib?
 
 Traditional web media players fall into two traps:
 1. **Monolithic & Heavy**: Bundling giant 15MB–40MB FFmpeg WASM binaries that drain mobile battery, stall startup by 3+ seconds, and consume hundreds of megabytes of RAM.
 2. **Standard Player Lock-in**: Hardcoding layout, network logic, and UI into rigid single-package players that are difficult to customize or extend.
 
-`media-runtime` takes a **runtime-first, modular approach**:
+`VidoLib` takes a **runtime-first, modular approach**:
 - 🚀 **Zero-Copy & Hardware-Accelerated**: Direct integration with browser `WebCodecs API`, `WebAudio/AudioWorklet`, and `WebGL/WebGPU` hardware decoding paths.
-- ⚡ **Lightweight Core**: `@media-runtime/core` weighs **only 3.4 KB gzipped** with zero bundled decoders.
+- ⚡ **Lightweight Core**: `@vidolib/core` weighs **only 3.4 KB gzipped** with zero bundled decoders.
 - 🧩 **100% Plugin-Based**: Every container parser, ABR algorithm, subtitle renderer, and UI component is an independent plugin.
 - 🛡️ **Patent Safe**: Hardware decoding for patented codecs (H.264, HEVC, AC-3) eliminates patent pool liabilities for web applications.
 
@@ -37,17 +37,17 @@ Traditional web media players fall into two traps:
 Install only the packages your application needs:
 
 ```bash
-npm install @media-runtime/core @media-runtime/containers @media-runtime/ui
+npm install @vidolib/core @vidolib/containers @vidolib/ui
 ```
 
 ### 2. Basic Player Setup
 
 ```typescript
-import { Player } from '@media-runtime/core';
-import { MP4Demuxer } from '@media-runtime/containers';
-import { PlayerUI } from '@media-runtime/ui';
+import { Player } from '@vidolib/core';
+import { MP4Demuxer } from '@vidolib/containers';
+import { PlayerUI } from '@vidolib/ui';
 
-// Initialize core runtime
+// Initialize core VidoLib runtime
 const player = new Player();
 
 // Bind WCAG 2.1 AA accessible UI controls
@@ -65,7 +65,7 @@ player.play();
 
 > *Read our full breakdown: [NO_FFMPEG_MANIFESTO.md](./docs/NO_FFMPEG_MANIFESTO.md)*
 
-| Metric | Native `media-runtime` | FFmpeg WASM Players |
+| Metric | Native VidoLib | FFmpeg WASM Players |
 |---|---|---|
 | **Engine Download Size** | **3.4 KB – 30 KB** | 15 MB – 40 MB |
 | **Startup Latency** | **< 110 ms** | 1,500 ms – 4,000 ms |
@@ -73,7 +73,7 @@ player.play();
 | **Memory Footprint** | **< 18 MB RAM** | 150 MB – 400 MB RAM |
 | **Mobile Web Compatibility** | **100% Native OS Support** | Often crashes iOS Safari OOM |
 
-By leaning into native browser capabilities (`VideoDecoder`, `AudioDecoder`, `MediaSource`, `WebGPU`, `AudioWorklet`), `media-runtime` achieves near-native performance while keeping bundle sizes micro-scale.
+By leaning into native browser capabilities (`VideoDecoder`, `AudioDecoder`, `MediaSource`, `WebGPU`, `AudioWorklet`), `VidoLib` achieves near-native performance while keeping bundle sizes micro-scale.
 
 ---
 
@@ -83,65 +83,33 @@ Every package is independently versioned, typed, and available via npm or CDN `<
 
 | Package | Purpose | Size (gzipped) | CDN Bundle |
 |---|---|---|---|
-| [`@media-runtime/core`](./packages/core) | Player, Clock, Pipeline, EventBus | **3.47 KB** | `MediaRuntimeCore` |
-| [`@media-runtime/stream`](./packages/stream) | Range HTTP, Blob, File, WS, WebRTC, S3, IPFS | **2.86 KB** | `MediaRuntimeStream` |
-| [`@media-runtime/containers`](./packages/containers) | MP4, MKV, WebM, AVI, MOV, FLV, TS, PS, OGG, ASF | **5.15 KB** | `MediaRuntimeContainers` |
-| [`@media-runtime/manifest`](./packages/manifest) | HLS (`.m3u8`) & DASH (`.mpd`) parsers | **3.07 KB** | `MediaRuntimeManifest` |
-| [`@media-runtime/abr`](./packages/abr) | EWMA throughput & buffer-based ABR | **1.76 KB** | `MediaRuntimeAbr` |
-| [`@media-runtime/codecs`](./packages/codecs) | WebCodecs / Native / Royalty-free WASM negotiator | **3.02 KB** | `MediaRuntimeCodecs` |
-| [`@media-runtime/renderer`](./packages/renderer) | Canvas2D, WebGL, WebGPU backends | **1.85 KB** | `MediaRuntimeRenderer` |
-| [`@media-runtime/subtitle`](./packages/subtitle) | ASS, SSA, SRT, VTT, PGS GPU engine | **2.54 KB** | `MediaRuntimeSubtitle` |
-| [`@media-runtime/ui`](./packages/ui) | WCAG 2.1 AA accessible glassmorphic UI controls | **3.53 KB** | `MediaRuntimeUi` |
-| [`@media-runtime/telemetry`](./packages/telemetry) | Zero-tracking QoE metrics event surface | **1.76 KB** | `MediaRuntimeTelemetry` |
-| [`@media-runtime/os-integration`](./packages/os-integration) | Media Session API, PiP, Fullscreen, Cast | **1.88 KB** | `MediaRuntimeOsIntegration` |
+| [`@vidolib/core`](./packages/core) | Player, Clock, Pipeline, EventBus | **3.47 KB** | `VidoLibCore` |
+| [`@vidolib/stream`](./packages/stream) | Range HTTP, Blob, File, WS, WebRTC, S3, IPFS | **2.86 KB** | `VidoLibStream` |
+| [`@vidolib/containers`](./packages/containers) | MP4, MKV, WebM, AVI, MOV, FLV, TS, PS, OGG, ASF | **5.15 KB** | `VidoLibContainers` |
+| [`@vidolib/manifest`](./packages/manifest) | HLS (`.m3u8`) & DASH (`.mpd`) parsers | **3.07 KB** | `VidoLibManifest` |
+| [`@vidolib/abr`](./packages/abr) | EWMA throughput & buffer-based ABR | **1.76 KB** | `VidoLibAbr` |
+| [`@vidolib/codecs`](./packages/codecs) | WebCodecs / Native / Royalty-free WASM negotiator | **3.02 KB** | `VidoLibCodecs` |
+| [`@vidolib/renderer`](./packages/renderer) | Canvas2D, WebGL, WebGPU backends | **1.85 KB** | `VidoLibRenderer` |
+| [`@vidolib/subtitle`](./packages/subtitle) | ASS, SSA, SRT, VTT, PGS GPU engine | **2.54 KB** | `VidoLibSubtitle` |
+| [`@vidolib/ui`](./packages/ui) | WCAG 2.1 AA accessible glassmorphic UI controls | **3.53 KB** | `VidoLibUi` |
+| [`@vidolib/telemetry`](./packages/telemetry) | Zero-tracking QoE metrics event surface | **1.76 KB** | `VidoLibTelemetry` |
+| [`@vidolib/os-integration`](./packages/os-integration) | Media Session API, PiP, Fullscreen, Cast | **1.88 KB** | `VidoLibOsIntegration` |
 
 ---
 
 ## 🌐 CDN Usage (No Build Step Required)
 
-Use `@media-runtime` directly in plain HTML:
+Use `@vidolib` directly in plain HTML:
 
 ```html
 <div id="player-container" style="width: 800px; height: 450px;"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@media-runtime/core/dist/index.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@media-runtime/ui/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vidolib/core/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@vidolib/ui/dist/index.umd.js"></script>
 <script>
-  const player = new MediaRuntimeCore.Player();
-  const ui = new MediaRuntimeUi.PlayerUI(player, document.getElementById('player-container'));
+  const player = new VidoLibCore.Player();
+  const ui = new VidoLibUi.PlayerUI(player, document.getElementById('player-container'));
 </script>
-```
-
----
-
-## 🛠️ Contributing & Developer Guide
-
-We welcome contributions from developers of all skill levels! Whether you want to add a new container demuxer, write a custom ABR algorithm, design a sleek UI skin, or improve test coverage:
-
-- 📖 **[Contributor Guide (`CONTRIBUTING.md`)](./CONTRIBUTING.md)**: Setup, build system, and PR guidelines.
-- 🏗️ **[Architecture Deep-Dive (`docs/ARCHITECTURE.md`)](./docs/ARCHITECTURE.md)**: Core engine flow, Web Worker pipelines, and memory model.
-- 🔌 **[Plugin Authoring Guide (`docs/PLUGINS.md`)](./docs/PLUGINS.md)**: Build custom plugins in < 30 lines of code.
-- 🗺️ **[Open Contributor Roadmap (`docs/ROADMAP.md`)](./docs/ROADMAP.md)**: Pick up an open feature task!
-
-### Local Development Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/media-runtime/media-runtime.git
-cd media-runtime
-
-# Install dependencies
-npm install
-
-# Build all packages in <1s (Go-powered esbuild)
-npm run build
-
-# Run unit tests
-node scripts/test-runner.js
-
-# Run licensing & size audits
-npm run check-licensing
-npm run size-limit
 ```
 
 ---

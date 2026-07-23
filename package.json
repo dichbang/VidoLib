@@ -1,8 +1,8 @@
 {
-  "name": "media-runtime-monorepo",
+  "name": "vidolib-monorepo",
   "version": "1.0.0",
   "private": true,
-  "description": "Modular TypeScript media runtime for the browser with zero-copy hardware decoding, ABR, and worker isolation.",
+  "description": "VidoLib - High-performance, zero-copy, worker-first web media runtime monorepo",
   "workspaces": [
     "packages/*"
   ],
@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@types/web-app-manifest": "^1.0.8",
-    "esbuild": "^0.28.1",
+    "esbuild": "^0.25.0",
     "typescript": "^5.7.2",
     "vitest": "^3.0.0"
   },

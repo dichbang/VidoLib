@@ -29,7 +29,7 @@ const BUDGETS = [
   { package: 'utils', maxSizeKb: 25 }
 ];
 
-console.log('Running Bundle Size Budget Audit...\n');
+console.log('Running VidoLib Bundle Size Budget Audit...\n');
 let failed = false;
 
 for (const item of BUDGETS) {
@@ -45,7 +45,6 @@ for (const item of BUDGETS) {
       totalBytes += gzipped.length;
     }
   } else {
-    // Estimate based on src if dist not yet built
     const srcPath = path.join(rootDir, 'packages', item.package, 'src');
     if (fs.existsSync(srcPath)) {
       const getFiles = (dir) => {
@@ -65,7 +64,7 @@ for (const item of BUDGETS) {
       for (const file of files) {
         const content = fs.readFileSync(file);
         const gzipped = zlib.gzipSync(content);
-        totalBytes += Math.floor(gzipped.length * 0.4); // compressed JS estimate
+        totalBytes += Math.floor(gzipped.length * 0.4);
       }
     }
   }
@@ -74,7 +73,7 @@ for (const item of BUDGETS) {
   const status = totalBytes <= item.maxSizeKb * 1024 ? '✅ PASS' : '❌ FAIL';
   if (totalBytes > item.maxSizeKb * 1024) failed = true;
 
-  console.log(`${status} @media-runtime/${item.package.padEnd(16)} Size: ${sizeKb.padStart(6)} KB (Max Budget: ${item.maxSizeKb} KB gzipped)`);
+  console.log(`${status} @vidolib/${item.package.padEnd(16)} Size: ${sizeKb.padStart(6)} KB (Max Budget: ${item.maxSizeKb} KB gzipped)`);
 }
 
 if (failed) {

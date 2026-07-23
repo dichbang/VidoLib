@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/security",
+  "name": "@vidolib/security",
   "version": "1.0.0",
-  "description": "Container parser fuzzing targets, byte mutation engine, and CSP sandbox helpers",
+  "description": "Container parser fuzzing targets, byte mutation engine, and CSP sandbox helpers for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

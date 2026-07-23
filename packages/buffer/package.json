@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/buffer",
+  "name": "@vidolib/buffer",
   "version": "1.0.0",
-  "description": "Ring buffer, backpressure controller, and seek indexing for media-runtime",
+  "description": "Ring buffer, backpressure controller, and seek indexing for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

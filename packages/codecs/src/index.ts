@@ -1,4 +1,4 @@
-import { VideoPacket, AudioPacket } from '@media-runtime/core';
+import { VideoPacket, AudioPacket } from '@vidolib/core';
 
 export type DecodeEngine = 'webcodecs' | 'native' | 'wasm-royalty-free' | 'ffmpeg-wasm-opt-in';
 
@@ -26,7 +26,6 @@ export interface DecodedAudioFrame {
 
 export class CodecNegotiator {
   public static async negotiateVideo(codec: string, width: number = 1920, height: number = 1080): Promise<CodecCapability> {
-    // 1. Check WebCodecs API
     if (typeof (globalThis as any).VideoDecoder !== 'undefined') {
       try {
         const support = await (globalThis as any).VideoDecoder.isConfigSupported({
@@ -45,7 +44,6 @@ export class CodecNegotiator {
       } catch {}
     }
 
-    // 2. Check Native HTMLMediaElement / MSE
     if (typeof document !== 'undefined' && typeof document.createElement === 'function') {
       try {
         const v = document.createElement('video');
@@ -63,7 +61,6 @@ export class CodecNegotiator {
       } catch {}
     }
 
-    // 3. Headless / Node testing environment capability fallback
     if (typeof process !== 'undefined' && process.env) {
       return {
         codec,
@@ -73,7 +70,6 @@ export class CodecNegotiator {
       };
     }
 
-    // 4. Royalty-free WASM software decoders
     const royaltyFreeCodecs = ['av01.', 'vp8', 'vp09.', 'theora'];
     const isRoyaltyFree = royaltyFreeCodecs.some(rf => codec.toLowerCase().includes(rf));
 
@@ -157,7 +153,7 @@ export class WASMRoyaltyFreeDecoder {
 export class FFmpegWasmOptInFallback {
   constructor() {
     console.warn(
-      '⚠️ [media-runtime NOTICE] FFmpeg WASM fallback plugin loaded! ' +
+      '⚠️ [VidoLib NOTICE] FFmpeg WASM fallback plugin loaded! ' +
       'This software decoder bundle increases package size by ~12MB and may carry patent licensing obligations for H.264/HEVC/AC-3.'
     );
   }

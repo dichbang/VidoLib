@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/telemetry",
+  "name": "@vidolib/telemetry",
   "version": "1.0.0",
-  "description": "Zero-tracking QoE event bus and telemetry surface for media-runtime",
+  "description": "Zero-tracking QoE event bus and telemetry surface for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

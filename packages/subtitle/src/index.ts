@@ -1,4 +1,4 @@
-import { SubtitlePacket } from '@media-runtime/core';
+import { SubtitlePacket } from '@vidolib/core';
 
 export class SRTParser {
   public static parse(srtText: string): SubtitlePacket[] {
@@ -50,8 +50,8 @@ export class ASSParser {
           packets.push({
             startTime: this.parseTimestamp(start),
             endTime: this.parseTimestamp(end),
-            text: rawText.replace(/\{[^}]+\}/g, ''), // Plain text
-            styledMarkup: rawText // Preserve ASS styling tags {\k50}, {\pos(x,y)}, etc.
+            text: rawText.replace(/\{[^}]+\}/g, ''),
+            styledMarkup: rawText
           });
         }
       }

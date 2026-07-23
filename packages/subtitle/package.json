@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/subtitle",
+  "name": "@vidolib/subtitle",
   "version": "1.0.0",
-  "description": "GPU/Canvas subtitle engine supporting ASS, SSA, SRT, VTT, and PGS formats",
+  "description": "GPU/Canvas subtitle engine supporting ASS, SSA, SRT, VTT, and PGS formats for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

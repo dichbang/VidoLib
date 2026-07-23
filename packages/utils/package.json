@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/utils",
+  "name": "@vidolib/utils",
   "version": "1.0.0",
-  "description": "Shared bitstream readers, ring buffers, and utilities for media-runtime",
+  "description": "Shared bitstream readers, ring buffers, and utilities for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

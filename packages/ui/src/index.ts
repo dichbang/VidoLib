@@ -1,4 +1,4 @@
-import { Player } from '@media-runtime/core';
+import { Player } from '@vidolib/core';
 
 export class PlayerUI {
   private container: HTMLElement;
@@ -19,17 +19,16 @@ export class PlayerUI {
   }
 
   private initDOM(): void {
-    this.container.classList.add('media-runtime-container');
+    this.container.classList.add('vidolib-container');
     this.container.setAttribute('role', 'region');
-    this.container.setAttribute('aria-label', 'Media Player Controls');
+    this.container.setAttribute('aria-label', 'VidoLib Media Player Controls');
     this.container.style.position = 'relative';
     this.container.style.overflow = 'hidden';
     this.container.style.backgroundColor = '#000';
 
-    // Apply dark glassmorphic styling
     const style = document.createElement('style');
     style.textContent = `
-      .media-runtime-controls {
+      .vidolib-controls {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -47,7 +46,7 @@ export class PlayerUI {
         box-sizing: border-box;
         z-index: 100;
       }
-      .media-runtime-btn {
+      .vidolib-btn {
         background: transparent;
         border: none;
         color: #F8FAFC;
@@ -58,11 +57,11 @@ export class PlayerUI {
         align-items: center;
         justify-content: center;
       }
-      .media-runtime-btn:focus-visible {
+      .vidolib-btn:focus-visible {
         outline: 2px solid #38BDF8;
         outline-offset: 2px;
       }
-      .media-runtime-slider {
+      .vidolib-slider {
         accent-color: #38BDF8;
         cursor: pointer;
         flex: 1;
@@ -71,37 +70,32 @@ export class PlayerUI {
     document.head.appendChild(style);
 
     this.controlsBar = document.createElement('div');
-    this.controlsBar.className = 'media-runtime-controls';
+    this.controlsBar.className = 'vidolib-controls';
 
-    // Play/Pause Button
     this.playBtn = document.createElement('button');
-    this.playBtn.className = 'media-runtime-btn';
+    this.playBtn.className = 'vidolib-btn';
     this.playBtn.setAttribute('aria-label', 'Play');
     this.playBtn.innerHTML = '▶';
 
-    // Time Slider
     this.timeSlider = document.createElement('input');
     this.timeSlider.type = 'range';
-    this.timeSlider.className = 'media-runtime-slider';
+    this.timeSlider.className = 'vidolib-slider';
     this.timeSlider.min = '0';
     this.timeSlider.max = '100';
     this.timeSlider.value = '0';
     this.timeSlider.setAttribute('aria-label', 'Seek timeline');
 
-    // Time Display
     this.timeDisplay = document.createElement('span');
     this.timeDisplay.textContent = '00:00 / 00:00';
 
-    // Volume Button
     this.volumeBtn = document.createElement('button');
-    this.volumeBtn.className = 'media-runtime-btn';
+    this.volumeBtn.className = 'vidolib-btn';
     this.volumeBtn.setAttribute('aria-label', 'Mute');
     this.volumeBtn.innerHTML = '🔊';
 
-    // Volume Slider
     this.volumeSlider = document.createElement('input');
     this.volumeSlider.type = 'range';
-    this.volumeSlider.className = 'media-runtime-slider';
+    this.volumeSlider.className = 'vidolib-slider';
     this.volumeSlider.style.width = '60px';
     this.volumeSlider.min = '0';
     this.volumeSlider.max = '1';
@@ -109,15 +103,13 @@ export class PlayerUI {
     this.volumeSlider.value = '1';
     this.volumeSlider.setAttribute('aria-label', 'Volume level');
 
-    // PiP Button
     this.pipBtn = document.createElement('button');
-    this.pipBtn.className = 'media-runtime-btn';
+    this.pipBtn.className = 'vidolib-btn';
     this.pipBtn.setAttribute('aria-label', 'Picture in Picture');
     this.pipBtn.innerHTML = '⧉';
 
-    // Fullscreen Button
     this.fullscreenBtn = document.createElement('button');
-    this.fullscreenBtn.className = 'media-runtime-btn';
+    this.fullscreenBtn.className = 'vidolib-btn';
     this.fullscreenBtn.setAttribute('aria-label', 'Toggle Fullscreen');
     this.fullscreenBtn.innerHTML = '⛶';
 

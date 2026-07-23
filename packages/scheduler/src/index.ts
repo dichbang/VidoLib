@@ -1,4 +1,4 @@
-import { Clock, VideoPacket } from '@media-runtime/core';
+import { Clock, VideoPacket } from '@vidolib/core';
 
 export interface SchedulerStats {
   renderedFrames: number;
@@ -9,7 +9,7 @@ export interface SchedulerStats {
 export class AVSynchronizer {
   private renderedFramesCount: number = 0;
   private droppedFramesCount: number = 0;
-  private maxDriftThresholdMs: number = 40; // 40ms A/V sync tolerance window
+  private maxDriftThresholdMs: number = 40;
 
   constructor(private clock: Clock) {}
 
@@ -18,11 +18,9 @@ export class AVSynchronizer {
     const diffMs = (videoPts - audioPts) * 1000;
 
     if (diffMs < -this.maxDriftThresholdMs) {
-      // Video is too far behind audio -> drop frame to catch up
       this.droppedFramesCount++;
       return 'drop';
     } else if (diffMs > this.maxDriftThresholdMs) {
-      // Video is ahead of audio -> wait for audio clock to advance
       return 'wait';
     }
 

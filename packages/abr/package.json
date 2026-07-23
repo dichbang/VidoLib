@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/abr",
+  "name": "@vidolib/abr",
   "version": "1.0.0",
-  "description": "Bandwidth estimation (EWMA) and bitrate-ladder ABR controller for media-runtime",
+  "description": "Bandwidth estimation (EWMA) and bitrate-ladder ABR controller for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

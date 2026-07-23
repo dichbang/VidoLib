@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/os-integration",
+  "name": "@vidolib/os-integration",
   "version": "1.0.0",
-  "description": "Media Session API, Picture-in-Picture, Fullscreen, and Cast/AirPlay OS plugins",
+  "description": "Media Session API, Picture-in-Picture, Fullscreen, and Cast/AirPlay OS plugins for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

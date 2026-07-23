@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/worker",
+  "name": "@vidolib/worker",
   "version": "1.0.0",
-  "description": "Worker thread orchestration and Transferable object pipeline for media-runtime",
+  "description": "Worker thread orchestration and Transferable object pipeline for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

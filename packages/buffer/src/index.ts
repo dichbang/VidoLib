@@ -1,4 +1,4 @@
-import { RingBuffer } from '@media-runtime/utils';
+import { RingBuffer } from '@vidolib/utils';
 
 export interface SeekEntry {
   timestampSeconds: number;
@@ -42,7 +42,7 @@ export class BufferController {
   private lowWaterMarkBytes: number;
   public seekIndex: SeekIndex = new SeekIndex();
 
-  constructor(maxCapacityBytes: number = 10 * 1024 * 1024) { // 10MB default
+  constructor(maxCapacityBytes: number = 10 * 1024 * 1024) {
     this.ringBuffer = new RingBuffer(maxCapacityBytes);
     this.highWaterMarkBytes = Math.floor(maxCapacityBytes * 0.8);
     this.lowWaterMarkBytes = Math.floor(maxCapacityBytes * 0.2);

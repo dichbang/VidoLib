@@ -1,7 +1,7 @@
 {
-  "name": "@media-runtime/ui",
+  "name": "@vidolib/ui",
   "version": "1.0.0",
-  "description": "Framework-agnostic, WCAG 2.1 AA compliant UI controls for media-runtime",
+  "description": "Framework-agnostic, WCAG 2.1 AA compliant UI controls for VidoLib",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

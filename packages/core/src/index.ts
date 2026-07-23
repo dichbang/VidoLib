@@ -1,8 +1,8 @@
-import { PluginRegistry, MediaPlugin, PluginContext } from '@media-runtime/plugins';
+import { PluginRegistry, MediaPlugin, PluginContext } from '@vidolib/plugins';
 
 export interface VideoPacket {
-  pts: number; // Presentation timestamp in seconds
-  dts: number; // Decode timestamp in seconds
+  pts: number;
+  dts: number;
   data: Uint8Array;
   isKeyframe: boolean;
   duration?: number;
@@ -113,7 +113,6 @@ export class Player {
   private durationSeconds: number = 0;
   private volumeLevel: number = 1.0;
   private isMuted: boolean = false;
-  private activeTracks: Map<TrackKind, Track> = new Map();
 
   constructor(initialConfig?: Record<string, unknown>) {
     if (initialConfig) {
@@ -140,7 +139,6 @@ export class Player {
     this.setState('loading');
     try {
       this.emit('loadstart', { source });
-      // Pipeline execution via registered plugins
       this.setState('paused');
     } catch (err) {
       this.setState('error');
