@@ -35,6 +35,7 @@ def fetch_stargazers():
             f"https://api.github.com/repos/{REPO}/stargazers",
             headers=HEADERS,
             params={"per_page": 100, "page": page},
+            timeout=(10, 30),
         )
         resp.raise_for_status()
         data = resp.json()
